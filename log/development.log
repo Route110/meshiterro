@@ -2354,3 +2354,284 @@ Processing by PostImagesController#index as HTML
 Completed 200 OK in 682ms (Views: 641.2ms | ActiveRecord: 4.8ms)
 
 
+Started GET "/users/1" for 10.0.2.2 at 2018-12-11 10:38:28 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPostImage Load (2.0ms)[0m  [1m[34mSELECT  "post_images".* FROM "post_images" WHERE "post_images"."user_id" = ? ORDER BY "post_images"."id" DESC LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/users/show.html.erb:13
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_images" WHERE "post_images"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:42
+  Rendered users/show.html.erb within layouts/application (4660.3ms)
+Completed 200 OK in 5576ms (Views: 5440.3ms | ActiveRecord: 23.9ms)
+
+
+Started GET "/post_images/6" for 10.0.2.2 at 2018-12-11 10:39:06 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostImagesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPostImage Load (1.8ms)[0m  [1m[34mSELECT  "post_images".* FROM "post_images" WHERE "post_images"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/post_images_controller.rb:22
+  Rendering post_images/show.html.erb within layouts/application
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/show.html.erb:17
+  [1m[36mFavorite Exists (2.1ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."post_image_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["post_image_id", 6], ["user_id", 1], ["LIMIT", 1]]
+  ↳ app/models/post_image.rb:11
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."post_image_id" = ?[0m  [["post_image_id", 6]]
+  ↳ app/views/post_images/show.html.erb:34
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."post_image_id" = ?[0m  [["post_image_id", 6]]
+  ↳ app/views/post_images/show.html.erb:40
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."post_image_id" = ?[0m  [["post_image_id", 6]]
+  ↳ app/views/post_images/show.html.erb:54
+  [1m[36mPostComment Load (2.4ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."post_image_id" = ?[0m  [["post_image_id", 6]]
+  ↳ app/views/post_images/show.html.erb:57
+  Rendered post_images/show.html.erb within layouts/application (55.3ms)
+Completed 200 OK in 676ms (Views: 598.6ms | ActiveRecord: 23.6ms)
+
+
+Started GET "/p" for 10.0.2.2 at 2018-12-11 10:39:18 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/p"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/" for 10.0.2.2 at 2018-12-11 10:39:21 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostImagesController#index as HTML
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  Rendering post_images/index.html.erb within layouts/application
+  [1m[36mPostImage Load (4.4ms)[0m  [1m[34mSELECT  "post_images".* FROM "post_images" ORDER BY "post_images"."id" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/post_images/index.html.erb:8
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_images"[0m
+  ↳ app/views/post_images/index.html.erb:37
+  Rendered post_images/index.html.erb within layouts/application (217.9ms)
+Completed 200 OK in 888ms (Views: 816.7ms | ActiveRecord: 11.5ms)
+
+
+Started DELETE "/users/sign_out" for 10.0.2.2 at 2018-12-11 10:39:26 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"XD0ye/ZD7fbHbpY6x2p6PxlXLfBJF/SWzS0WbxJWdl0XqG2kmNvQkeJuhpOsXRlSV4vbt2YL2KqRPN5ofvB1qw=="}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 23ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 10.0.2.2 at 2018-12-11 10:39:26 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostImagesController#index as HTML
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2018-12-11 10:39:26 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 586ms (Views: 584.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 10.0.2.2 at 2018-12-11 10:39:28 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"z4MzbYgMWfnrilIiZjXrQnMy6YKcGuEfzFnL9qh46QWzpYKR3o4g+w2jhKAPMnQkpwdsGWLXLqz0MxV0ORSg8A==", "user"=>{"email"=>"spw_dyk@icloud.com", "password"=>"[FILTERED]"}, "commit"=>"サインイン"}
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "spw_dyk@icloud.com"], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (11.1ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-12-11 10:39:28.791761"], ["last_sign_in_at", "2018-12-11 10:05:20.607277"], ["sign_in_count", 11], ["updated_at", "2018-12-11 10:39:28.794952"], ["id", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (10.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 344ms (ActiveRecord: 25.1ms)
+
+
+Started GET "/" for 10.0.2.2 at 2018-12-11 10:39:28 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostImagesController#index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  Rendering post_images/index.html.erb within layouts/application
+  [1m[36mPostImage Load (2.0ms)[0m  [1m[34mSELECT  "post_images".* FROM "post_images" ORDER BY "post_images"."id" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/post_images/index.html.erb:8
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_images"[0m
+  ↳ app/views/post_images/index.html.erb:37
+  Rendered post_images/index.html.erb within layouts/application (235.1ms)
+Completed 200 OK in 860ms (Views: 823.9ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/users/1" for 10.0.2.2 at 2018-12-11 10:40:01 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPostImage Load (1.9ms)[0m  [1m[34mSELECT  "post_images".* FROM "post_images" WHERE "post_images"."user_id" = ? ORDER BY "post_images"."id" DESC LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/users/show.html.erb:13
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_images" WHERE "post_images"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:42
+  Rendered users/show.html.erb within layouts/application (156.1ms)
+Completed 200 OK in 786ms (Views: 747.4ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/post_images/6" for 10.0.2.2 at 2018-12-11 10:40:28 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostImagesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPostImage Load (1.9ms)[0m  [1m[34mSELECT  "post_images".* FROM "post_images" WHERE "post_images"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/post_images_controller.rb:22
+  Rendering post_images/show.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/show.html.erb:17
+  [1m[36mFavorite Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."post_image_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["post_image_id", 6], ["user_id", 1], ["LIMIT", 1]]
+  ↳ app/models/post_image.rb:11
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."post_image_id" = ?[0m  [["post_image_id", 6]]
+  ↳ app/views/post_images/show.html.erb:34
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."post_image_id" = ?[0m  [["post_image_id", 6]]
+  ↳ app/views/post_images/show.html.erb:40
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."post_image_id" = ?[0m  [["post_image_id", 6]]
+  ↳ app/views/post_images/show.html.erb:54
+  [1m[36mPostComment Load (1.7ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."post_image_id" = ?[0m  [["post_image_id", 6]]
+  ↳ app/views/post_images/show.html.erb:57
+  Rendered post_images/show.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 663ms (Views: 609.4ms | ActiveRecord: 14.0ms)
+
+
+Started DELETE "/post_images/6" for 10.0.2.2 at 2018-12-11 10:40:33 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostImagesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"99K5thGxmw6RpzESvxZgPZzKPU1NQsUi/dw7BaYIhAo1354/3pRC0PLDfKz4nR/z9HH7zLSbHC7bL/pdgf90qQ==", "id"=>"6"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPostImage Load (1.3ms)[0m  [1m[34mSELECT  "post_images".* FROM "post_images" WHERE "post_images"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/post_images_controller.rb:27
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/post_images_controller.rb:28
+  [1m[36mPostComment Load (2.2ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."post_image_id" = ?[0m  [["post_image_id", 6]]
+  ↳ app/controllers/post_images_controller.rb:28
+  [1m[36mFavorite Load (0.3ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."post_image_id" = ?[0m  [["post_image_id", 6]]
+  ↳ app/controllers/post_images_controller.rb:28
+  [1m[36mPostImage Destroy (5.3ms)[0m  [1m[31mDELETE FROM "post_images" WHERE "post_images"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/post_images_controller.rb:28
+  [1m[35m (8.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/post_images_controller.rb:28
+Redirected to http://localhost:3000/post_images
+Completed 302 Found in 47ms (ActiveRecord: 20.7ms)
+
+
+Started GET "/post_images" for 10.0.2.2 at 2018-12-11 10:40:33 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostImagesController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  Rendering post_images/index.html.erb within layouts/application
+  [1m[36mPostImage Load (1.8ms)[0m  [1m[34mSELECT  "post_images".* FROM "post_images" ORDER BY "post_images"."id" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 5], ["OFFSET", 0]]
+  ↳ app/views/post_images/index.html.erb:8
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/index.html.erb:27
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_images"[0m
+  ↳ app/views/post_images/index.html.erb:37
+  Rendered post_images/index.html.erb within layouts/application (69.9ms)
+Completed 200 OK in 702ms (Views: 664.8ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/post_images/1" for 10.0.2.2 at 2018-12-11 10:40:50 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PostImagesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /var/lib/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mPostImage Load (1.8ms)[0m  [1m[34mSELECT  "post_images".* FROM "post_images" WHERE "post_images"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/post_images_controller.rb:22
+  Rendering post_images/show.html.erb within layouts/application
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/post_images/show.html.erb:17
+  [1m[36mFavorite Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "favorites" WHERE "favorites"."post_image_id" = ? AND "favorites"."user_id" = ? LIMIT ?[0m  [["post_image_id", 1], ["user_id", 1], ["LIMIT", 1]]
+  ↳ app/models/post_image.rb:11
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "favorites" WHERE "favorites"."post_image_id" = ?[0m  [["post_image_id", 1]]
+  ↳ app/views/post_images/show.html.erb:27
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."post_image_id" = ?[0m  [["post_image_id", 1]]
+  ↳ app/views/post_images/show.html.erb:40
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "post_comments" WHERE "post_comments"."post_image_id" = ?[0m  [["post_image_id", 1]]
+  ↳ app/views/post_images/show.html.erb:54
+  [1m[36mPostComment Load (1.2ms)[0m  [1m[34mSELECT "post_comments".* FROM "post_comments" WHERE "post_comments"."post_image_id" = ?[0m  [["post_image_id", 1]]
+  ↳ app/views/post_images/show.html.erb:57
+  Rendered post_images/show.html.erb within layouts/application (23.6ms)
+Completed 200 OK in 624ms (Views: 576.2ms | ActiveRecord: 12.0ms)
+
+
