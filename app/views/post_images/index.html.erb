@@ -27,13 +27,14 @@
                       <%= post_image.user.name %>
                     </li>
                     <li>
-                    <a href="#">23 コメント</a>
+                    <%= post_image.user.name %>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
           <% end %>
+          <%= paginate @post_images, class: "pagenate" %>
         </div>
       </div>
     </div>
